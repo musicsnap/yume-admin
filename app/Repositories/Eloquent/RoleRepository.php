@@ -15,11 +15,23 @@ class RoleRepository extends Repository {
         return Role::class;
     }
 
+
+    public function getRole(){
+        return $this->model->get();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCount(){
+        return $this->model->count();
+    }
+
     /**
      * 获取角色列表
      */
-    public function getRoleList(){
-        $role = $this->model->get();
+    public function getRoleList($orderSql,$order_dir,$start,$length){
+        $role = $this->model->orderBy($orderSql,$order_dir)->skip($start)->take($length)->get();
         return $role;
     }
 }

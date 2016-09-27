@@ -108,7 +108,7 @@ class UserController extends Controller
      * @return $this
      */
     public function create(){
-        $RoleList = $this->role->getRoleList();
+        $RoleList = $this->role->getRole();
 
         return view('admin.user.create')->with(compact('RoleList'));
     }
@@ -135,6 +135,29 @@ class UserController extends Controller
             flash('添加用户失败', 'error');
         }
 
+        return redirect('admin/user');
+    }
+
+    /**
+     * 编辑用户的界面
+     * @param $id
+     */
+    public function edit($id){
+        $UserInfo = $this->user->find($id);
+        return view('admin.user.edit')->with(compact('UserInfo'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UserRequest $request)
+    {
+        //
+        $this->user->updateUser($request);
         return redirect('admin/user');
     }
 
