@@ -19,7 +19,7 @@
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                <span class="active">添加用户</span>
+                <span class="active">编辑用户</span>
             </li>
         </ul>
         <div class="row">
@@ -28,7 +28,7 @@
                 <div class="portlet box red">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-gift"></i>添加用户</div>
+                            <i class="fa fa-gift"></i>编辑用户</div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse"> </a>
                             <a href="#portlet-config" data-toggle="modal" class="config"> </a>
@@ -48,13 +48,15 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{url('admin/user')}}" id="roleForm" class="form-horizontal" method="post">
+                        <form action="{{url('admin/user/update')}}" id="roleForm" class="form-horizontal" method="post">
                             {!!csrf_field()!!}
+                            <input type="hidden" id="method" name="_method" value="PATCH">
+                            <input type="hidden" name="id" value="{{$UserInfo->id}}">
                             <div class="form-body">
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">登录名</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" name="username" placeholder="登录名">
+                                        <input type="text" class="form-control" value="{{$UserInfo->username}}" name="username" placeholder="登录名">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -64,42 +66,10 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-envelope"></i>
                                             </span>
-                                            <input type="email" class="form-control" name="email" placeholder="Email Address">
+                                            <input type="email" class="form-control" value="{{$UserInfo->email}}" name="email" placeholder="Email Address">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">密码</label>
-                                    <div class="col-md-4">
-                                        <div class="input-group">
-                                            <input type="password" class="form-control" name="password" placeholder="密码">
-                                            <span class="input-group-addon">
-                                            <i class="fa fa-key"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">确认密码</label>
-                                    <div class="col-md-4">
-                                        <div class="input-group">
-                                            <input type="password" class="form-control" name="password_confirmation" placeholder="确认密码">
-                                            <span class="input-group-addon">
-                                            <i class="fa fa-key"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {{--<div class="form-group">--}}
-                                    {{--<label class="control-label col-md-3">用户角色</label>--}}
-                                    {{--<div class="col-md-4">--}}
-                                        {{--<select class="select2_single form-control" tabindex="-1" name="role_id">--}}
-                                            {{--{!! $roles->getMenu($RoleList) !!}--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
                             </div>
                             <div class="form-actions fluid">
                                 <div class="row">

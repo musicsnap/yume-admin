@@ -25,15 +25,14 @@ class UserRequest extends Request
     {
         $rules = [
             'email' => 'required|email',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required',
-//            'role_id' => 'required'
         ];
 
         if (request('id','')) {
             $rules['username'] = 'required|unique:users,username,'.$this->id;
         }else{
             $rules['username'] = 'required|unique:users,username';
+            $rules['password'] = 'required|confirmed';
+            $rules['password_confirmation'] = 'required';
         }
 
         return $rules;

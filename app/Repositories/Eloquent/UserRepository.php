@@ -38,5 +38,20 @@ class UserRepository extends Repository {
         return $userlist;
     }
 
+    public function updateUser($request){
+        $user = $this->model->find($request->id);
+        if ($user) {
+
+            $isUpdate = $user->update($request->all());
+            if ($isUpdate) {
+                flash('修改用户成功', 'success');
+                return true;
+            }
+            flash('修改用户失败', 'error');
+            return false;
+        }
+        abort(404,'用户数据找不到');
+    }
+
 
 }

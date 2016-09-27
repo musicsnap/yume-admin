@@ -150,7 +150,7 @@
     <script src="{{asset('backend/pages/scripts/ui-nestable.js')}}" type="text/javascript"></script>
     <script src="{{asset('backend/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('backend/global/plugins/layer/layer.js')}}"></script>
-    <script src="{{asset('backend/pages/scripts/menu-list.js')}}"></script>
+    <script src="{{asset('backend/js/menu-list.js')}}"></script>
     <script>
         $(document).ready(function() {
             // Select2
