@@ -14,11 +14,11 @@
         </div>
         <ul class="page-breadcrumb breadcrumb">
             <li>
-                <a href="/admin/user">用户管理</a>
+                <a href="/admin/user">角色管理</a>
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                <span class="active">用户列表</span>
+                <span class="active">角色列表</span>
             </li>
         </ul>
         <div class="m-heading-1 border-green m-bordered">
@@ -32,7 +32,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-settings font-dark"></i>
-                            <span class="caption-subject bold uppercase">用户列表</span>
+                            <span class="caption-subject bold uppercase">角色列表</span>
                         </div>
                         <div class="tools"> </div>
                     </div>
@@ -41,9 +41,9 @@
                             <thead>
                             <tr>
                                 <th> ID </th>
-                                <th><i class="fa fa-user">登录名</i></th>
-                                <th><i class="fa fa-envelope-o">email</i></th>
-                                <th><i class="fa fa-phone"> 联系电话</i> </th>
+                                <th><i class="fa fa-user">角色名称</i></th>
+                                <th>显示角色</th>
+                                <th>描述</th>
                                 <th> <i class="fa fa-calendar"> 创建时间 </i></th>
                                 {{--<th>用户角色</th>--}}
                                 <th> 操作 </th>

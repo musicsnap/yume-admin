@@ -151,7 +151,7 @@ abstract class Repository implements RepositoryInterface{
      * @return $this
      */
     public function orderBy($column, $direction = 'asc'){
-
+        return $this->model->orderBy($column,$direction);
     }
     /**
      * Load relations
@@ -161,6 +161,23 @@ abstract class Repository implements RepositoryInterface{
      * @return $this
      */
     public function with($relations){
+
     }
+
+    /**
+     * @param $start
+     */
+    public function skip($start){
+
+    }
+
+    /**
+     * @param $length
+     */
+    public function take($length){
+
+    }
+
+
 
 }

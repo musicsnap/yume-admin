@@ -14,7 +14,7 @@
         </div>
         <ul class="page-breadcrumb breadcrumb">
             <li>
-                <a href="/admin/user">权限管理</a>
+                <a href="/admin/permission">权限管理</a>
                 <i class="fa fa-circle"></i>
             </li>
             <li>
@@ -68,5 +68,11 @@
     <script src="{{asset('backend/global/scripts/datatable.js')}}" type="text/javascript"></script>
     <script src="{{asset('backend/global/plugins/datatables/datatables.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('backend/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js')}}" type="text/javascript"></script>
-    <script src="{{asset('backend/pages/scripts/table-datatables-buttons.js')}}" type="text/javascript"></script>
+    <script src="{{asset('backend/js/table-datatables-permission.js')}}" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+
+
+    </script>
 @endsection

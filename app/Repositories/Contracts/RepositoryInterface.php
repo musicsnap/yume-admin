@@ -114,4 +114,16 @@ interface RepositoryInterface
      */
     public function with($relations);
 
+    /**
+     * @param $start
+     * @return mixed
+     */
+    public function skip($start);
+
+    /**
+     * @param $lennth
+     * @return mixed
+     */
+    public function take($lennth);
+
 }
