@@ -74,8 +74,6 @@ var TableDatatablesButtons = function () {
             // set the initial value
             "pageLength": 10,
             "dom": "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'><'col-md-6 col-sm-12'>r><'table-scrollable't><'row'<'col-md-6 col-sm-12'i><'col-md-6 col-sm-12'l>r><'row'<'col-md-12 col-sm-12'p>>", // horizobtal scrollable datatable
-            // "dom": "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
-            //"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
             "pagingType":   "full_numbers",
             "processing": true,
             "serverSide": true,
@@ -93,7 +91,7 @@ var TableDatatablesButtons = function () {
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                             $(nTd).html("<a href='javascript:;' class='btn btn-outline btn-circle btn-sm blue'><i class='fa fa-edit'></i> 编辑 </a>");
                             $(nTd).append("<a href='javascript:;' class='btn btn-outline btn-circle dark btn-sm dark'><i class='fa fa-trash-o'></i> 删除 </a>");
-                            $(nTd).append("<a href='javascript:;' class='btn btn-outline btn-circle red btn-sm blue'><i class='fa fa-share'></i> 分享 </a>");
+                            $(nTd).append("<a href='javascript:;' class='btn btn-outline btn-circle red btn-sm blue'><i class='fa fa-share'></i> 权限 </a>");
                             $(nTd).append("<a href='javascript:;' class='btn green btn-sm btn-outline btn-circle uppercase'><i class='fa fa-share'></i> 查看 </a>");
                     }
                 },
