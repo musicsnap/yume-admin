@@ -57,7 +57,6 @@ class PermissionController extends Controller
         }
 
         return redirect('admin/permission');
-
     }
 
     /**
@@ -164,6 +163,8 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->permission->destoryPermission($id);
+
+        return redirect('admin/permission');
     }
 }

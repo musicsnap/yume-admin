@@ -2,7 +2,7 @@ var TableDatatablesButtons = function () {
 
     var initTable1 = function () {
         var table = $('#sample_1');
-
+        var csrf_token = $('#csrf_token').val();
         var fixedHeaderOffset = 0;
         if (App.getViewPort().width < App.getResponsiveBreakpoint('md')) {
             if ($('.page-header').hasClass('page-header-fixed-mobile')) {
@@ -87,7 +87,7 @@ var TableDatatablesButtons = function () {
                     "data": "id",
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                             $(nTd).html("<a href='/admin/permission/"+sData+"/edit' class='btn btn-outline btn-circle btn-sm blue'><i class='fa fa-edit'></i> 编辑 </a>");
-                            $(nTd).append("<a href='javascript:;' class='btn btn-outline btn-circle dark btn-sm dark'><i class='fa fa-trash-o'></i> 删除 </a>");
+                            $(nTd).append("<a href='javascript:;' data-id='"+sData+"' class=' destoryPermission btn btn-outline btn-circle dark btn-sm dark'><i class='fa fa-trash-o'></i><form action='/admin/permission/"+sData+"' method='POST' name='delete_item"+sData+"' style='display:none'><input type='hidden'name='_method' value='delete'><input type='hidden' name='_token' value='"+csrf_token+"'></form> 删除 </a>");
                             $(nTd).append("<a href='javascript:;' class='btn green btn-sm btn-outline btn-circle uppercase'><i class='fa fa-share'></i> 查看 </a>");
                     }
                 },

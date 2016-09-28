@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 127.0.0.1
+Source Server         : localhost
 Source Server Version : 50617
 Source Host           : localhost:3306
 Source Database       : yume
@@ -10,13 +10,13 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-09-27 16:03:57
+Date: 2016-09-28 22:05:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `menus`
+-- Table structure for menus
 -- ----------------------------
 DROP TABLE IF EXISTS `menus`;
 CREATE TABLE `menus` (
@@ -44,16 +44,16 @@ INSERT INTO `menus` VALUES ('5', '用户列表', '/admin/user', 'fa fa-user', '4
 INSERT INTO `menus` VALUES ('6', '用户添加', '/admin/user/create', 'fa fa-user-plus', '4', 'admin.users.add', 'admin/user/create', '0', '2016-09-18 09:03:56', '2016-09-18 09:03:56');
 INSERT INTO `menus` VALUES ('7', '权限管理', '/admin/permission', 'fa fa-key', '2', 'admin.permissions.manage', 'admin/permission,admin/permission/create', '0', '2016-09-18 09:03:56', '2016-09-23 11:58:37');
 INSERT INTO `menus` VALUES ('8', '角色管理', '/admin/role', '', '2', 'admin.roles.manage', 'admin/role,admin/role/create', '0', '2016-09-18 09:03:56', '2016-09-20 09:25:50');
-INSERT INTO `menus` VALUES ('14', '文章管理', '/admin/article', 'fa fa-book', '0', '', 'admin/article', '2', '2016-09-19 09:08:38', '2016-09-23 11:53:55');
-INSERT INTO `menus` VALUES ('15', '添加文章', '/admin/article', '', '14', '', '', '1', '2016-09-19 09:34:35', '2016-09-23 11:52:21');
-INSERT INTO `menus` VALUES ('16', '文章列表', '/admin/article', '', '14', '', '', '2', '2016-09-19 09:38:33', '2016-09-23 11:52:29');
+INSERT INTO `menus` VALUES ('14', '日志管理', '/admin/article', 'fa fa-book', '0', '', 'admin/article', '2', '2016-09-19 09:08:38', '2016-09-28 12:41:09');
+INSERT INTO `menus` VALUES ('15', '添加日志', '/admin/article', '', '14', '', '', '1', '2016-09-19 09:34:35', '2016-09-28 12:43:49');
+INSERT INTO `menus` VALUES ('16', '日志列表', '/admin/article', '', '14', '', '', '2', '2016-09-19 09:38:33', '2016-09-28 12:41:35');
 INSERT INTO `menus` VALUES ('20', '添加角色', '/admin/role/create', 'fa fa-user', '8', '', 'admin/role/create', '0', '2016-09-20 09:14:00', '2016-09-20 09:14:00');
 INSERT INTO `menus` VALUES ('21', '权限列表', '/admin/permission', 'fa fa-key', '7', '', 'admin/permission', '0', '2016-09-23 11:40:57', '2016-09-23 11:57:48');
 INSERT INTO `menus` VALUES ('22', '添加权限', '/admin/permission/create', 'fa fa-key', '7', '', 'admin/permission/create', '0', '2016-09-23 11:42:26', '2016-09-23 11:58:47');
 INSERT INTO `menus` VALUES ('23', '角色列表', '/admin/role', 'fa fa-user', '8', '', 'admin/role', '1', '2016-09-27 05:04:26', '2016-09-27 05:15:37');
 
 -- ----------------------------
--- Table structure for `migrations`
+-- Table structure for migrations
 -- ----------------------------
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
@@ -70,7 +70,7 @@ INSERT INTO `migrations` VALUES ('2016_09_13_055602_entrust_setup_tables', '1');
 INSERT INTO `migrations` VALUES ('2016_09_13_093624_create_menus_table', '1');
 
 -- ----------------------------
--- Table structure for `password_resets`
+-- Table structure for password_resets
 -- ----------------------------
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
@@ -86,7 +86,7 @@ CREATE TABLE `password_resets` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `permissions`
+-- Table structure for permissions
 -- ----------------------------
 DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE `permissions` (
@@ -114,10 +114,9 @@ INSERT INTO `permissions` VALUES ('8', 'admin.users.add', '添加用户', '添�
 INSERT INTO `permissions` VALUES ('9', 'admin.menus.add', '添加菜单', '添加菜单', '2016-09-20 17:22:15', '2016-09-20 17:22:20');
 INSERT INTO `permissions` VALUES ('10', 'admin.menus.edit', '编辑菜单', '编辑菜单', '2016-09-20 17:23:13', '2016-09-20 17:23:16');
 INSERT INTO `permissions` VALUES ('11', 'admin.menus.delete', '删除菜单', '删除菜单', '2016-09-20 17:23:44', '2016-09-20 17:23:47');
-INSERT INTO `permissions` VALUES ('12', 'admin.article.add', 'admin.article.add', 'admin.article.add', '2016-09-27 03:19:31', '2016-09-27 03:19:31');
 
 -- ----------------------------
--- Table structure for `permission_role`
+-- Table structure for permission_role
 -- ----------------------------
 DROP TABLE IF EXISTS `permission_role`;
 CREATE TABLE `permission_role` (
@@ -146,7 +145,7 @@ INSERT INTO `permission_role` VALUES ('11', '1');
 INSERT INTO `permission_role` VALUES ('1', '2');
 
 -- ----------------------------
--- Table structure for `roles`
+-- Table structure for roles
 -- ----------------------------
 DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
@@ -168,7 +167,7 @@ INSERT INTO `roles` VALUES ('2', 'user', '普通管理', '普通管理', '2016-0
 INSERT INTO `roles` VALUES ('3', 'kid', '小孩', '小孩', '2016-09-20 09:43:10', '2016-09-20 09:43:10');
 
 -- ----------------------------
--- Table structure for `role_user`
+-- Table structure for role_user
 -- ----------------------------
 DROP TABLE IF EXISTS `role_user`;
 CREATE TABLE `role_user` (
@@ -187,7 +186,7 @@ INSERT INTO `role_user` VALUES ('1', '1');
 INSERT INTO `role_user` VALUES ('1', '2');
 
 -- ----------------------------
--- Table structure for `users`
+-- Table structure for users
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (

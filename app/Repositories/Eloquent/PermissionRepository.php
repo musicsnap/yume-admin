@@ -48,4 +48,15 @@ class PermissionRepository extends Repository {
         }
         abort(404,'权限数据找不到');
     }
+
+    public function destoryPermission($id){
+        $isDelete = $this->model->destroy($id);
+        if ($isDelete) {
+            flash('删除权限成功', 'success');
+            return true;
+        }
+        flash('删除权限失败', 'error');
+        return false;
+    }
+
 }
