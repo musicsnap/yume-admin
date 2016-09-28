@@ -118,23 +118,7 @@ class UserController extends Controller
      * @param UserRequest $request
      */
     public function store(UserRequest $request){
-        $username = $request->input('username', '');
-        $email = $request->input('email', '');
-        $password = $request->input('password', '');
-//        $role_id = $request->input('role_id', '');
-        $result = $this->user->create(
-            [
-                'username'=>$username,
-                'email'=>$email,
-                'password'=>bcrypt($password),
-            ]
-        );
-        if ($result) {
-            flash('添加用户成功', 'success');
-        }else{
-            flash('添加用户失败', 'error');
-        }
-
+        $this->user->createUser($request);
         return redirect('admin/user');
     }
 
@@ -149,15 +133,25 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * 保存编辑
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(UserRequest $request)
     {
-        //
         $this->user->updateUser($request);
+        return redirect('admin/user');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     * 删除
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id){
+        $this->user->destroyUser($id);
         return redirect('admin/user');
     }
 

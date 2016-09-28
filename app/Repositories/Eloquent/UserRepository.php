@@ -38,6 +38,27 @@ class UserRepository extends Repository {
         return $userlist;
     }
 
+    public function createUser($request)
+    {
+        $username = $request->input('username', '');
+        $email = $request->input('email', '');
+        $password = $request->input('password', '');
+        $result = $this->model->create(
+            [
+                'username'=>$username,
+                'email'=>$email,
+                'password'=>bcrypt($password),
+            ]
+        );
+        if ($result) {
+            flash('添加用户成功', 'success');
+            return true;
+        }else{
+            flash('添加用户失败', 'error');
+            return false;
+        }
+    }
+
     public function updateUser($request){
         $user = $this->model->find($request->id);
         if ($user) {
@@ -51,6 +72,18 @@ class UserRepository extends Repository {
             return false;
         }
         abort(404,'用户数据找不到');
+    }
+
+    public function destroyUser($id){
+        $isDelete = $this->model->destroy($id);
+        if ($isDelete) {
+            flash('删除用户成功', 'success');
+            return true;
+            //这边是否要同时删除此用户的对于的角色信息
+
+        }
+        flash('删除用户失败', 'error');
+        return false;
     }
 
 

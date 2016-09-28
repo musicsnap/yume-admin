@@ -49,7 +49,7 @@ var MenuList = function() {
         });
         /**
          * 删除菜单
-         * @author 晚黎
+         * @author
          * @date   2016-08-22T06:51:25+0800
          * @param  {[type]}                 ) {	              		    } [description]
          * @return {[type]}                   [description]
