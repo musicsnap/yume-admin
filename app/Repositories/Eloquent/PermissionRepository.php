@@ -30,4 +30,22 @@ class PermissionRepository extends Repository {
         $Permission = $this->model->orderBy($orderSql,$order_dir)->skip($start)->take($length)->get();
         return $Permission;
     }
+
+    /**
+     * 修改权限信息
+     * @param $request
+     */
+    public function updatePermission($request){
+        $permisssion = $this->model->find($request->id);
+        if ($permisssion) {
+            $isUpdate = $permisssion->update($request->all());
+            if ($isUpdate) {
+                flash('修改权限成功', 'success');
+                return true;
+            }
+            flash('修改权限失败', 'error');
+            return false;
+        }
+        abort(404,'权限数据找不到');
+    }
 }

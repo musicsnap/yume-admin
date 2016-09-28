@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PermissionRequest;
 
 class PermissionController extends Controller
 {
@@ -45,7 +46,7 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PermissionRequest $request)
     {
         //
         $result = $this->permission->create($request->all());
@@ -136,7 +137,8 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+       $PermissionInfo =  $this->permission->find($id);
+        return view('admin.permission.edit')->with(compact('PermissionInfo'));
     }
 
     /**
@@ -146,9 +148,12 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PermissionRequest $request)
     {
         //
+        $this->permission->updatePermission($request);
+
+        return redirect('admin/permission');
     }
 
     /**
