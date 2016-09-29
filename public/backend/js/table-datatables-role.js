@@ -11,7 +11,7 @@ var TableDatatablesButtons = function () {
         } else if ($('.page-header').hasClass('navbar-fixed-top')) {
             fixedHeaderOffset = $('.page-header').outerHeight(true);
         }
-
+        var csrf_token = $('#csrf_token').val();
         var oTable = table.DataTable({
             "language": {
                 "processing": "加载中...",
@@ -77,6 +77,7 @@ var TableDatatablesButtons = function () {
             "pagingType":   "full_numbers",
             "processing": true,
             "serverSide": true,
+            "bStateSave": true,
             "ajax": {
                 "url":"/admin/role/show",
             },
@@ -89,8 +90,8 @@ var TableDatatablesButtons = function () {
                 {
                     "data": "id",
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html("<a href='javascript:;' class='btn btn-outline btn-circle btn-sm blue'><i class='fa fa-edit'></i> 编辑 </a>");
-                            $(nTd).append("<a href='javascript:;' class='btn btn-outline btn-circle dark btn-sm dark'><i class='fa fa-trash-o'></i> 删除 </a>");
+                            $(nTd).html("<a href='/admin/role/"+sData+"/edit' class='btn btn-outline btn-circle btn-sm blue'><i class='fa fa-edit'></i> 编辑 </a>");
+                            $(nTd).append("<a href='javascript:;' class='destoryRole btn btn-outline btn-circle dark btn-sm dark'><i class='fa fa-trash-o'></i><form action='/admin/role/"+sData+"' method='POST' name='delete_item"+sData+"' style='display:none'><input type='hidden'name='_method' value='delete'><input type='hidden' name='_token' value='"+csrf_token+"'></form> 删除 </a>");
                             $(nTd).append("<a href='javascript:;' class='btn btn-outline btn-circle red btn-sm blue'><i class='fa fa-share'></i> 权限 </a>");
                             $(nTd).append("<a href='javascript:;' class='btn green btn-sm btn-outline btn-circle uppercase'><i class='fa fa-share'></i> 查看 </a>");
                     }

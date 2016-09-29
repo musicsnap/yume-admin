@@ -25,9 +25,10 @@
             <h3>相关搜索</h3>
 
         </div>
+        @include('flash::message')
         <div class="row">
             <div class="col-md-12 ">
-
+                <input type="hidden" name="_token" id="csrf_token" value="{{csrf_token()}}">
                 <div class="portlet box green">
                     <div class="portlet-title">
                         <div class="caption font-dark">
@@ -69,4 +70,16 @@
     <script src="{{asset('backend/global/plugins/datatables/datatables.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('backend/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js')}}" type="text/javascript"></script>
     <script src="{{asset('backend/js/table-datatables-role.js')}}" type="text/javascript"></script>
+    <script src="{{asset('backend/global/plugins/layer/layer.js')}}"></script>
+    <script type="text/javascript">
+        $(document).on('click','.destoryRole',function () {
+            var _delete = $(this).attr('data-id');
+            //询问框
+            layer.confirm('确定要删除用户？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                $('form[name=delete_item'+_delete+']').submit();
+            });
+        });
+    </script>
 @endsection

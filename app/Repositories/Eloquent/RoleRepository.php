@@ -34,4 +34,34 @@ class RoleRepository extends Repository {
         $role = $this->model->orderBy($orderSql,$order_dir)->skip($start)->take($length)->get();
         return $role;
     }
+
+
+    public function updateRole($request){
+        $role = $this->model->find($request->id);
+        if ($role) {
+            $isUpdate = $role->update($request->all());
+            if ($isUpdate) {
+                flash('修改角色成功', 'success');
+                return true;
+            }
+            flash('修改角色失败', 'error');
+            return false;
+        }
+        abort(404,'角色数据找不到');
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function destroyRole($id)
+    {
+        $isDelete = $this->model->destroy($id);
+        if ($isDelete) {
+            flash('删除角色成功', 'success');
+            return true;
+        }
+        flash('删除角色失败', 'error');
+        return false;
+    }
 }

@@ -116,4 +116,34 @@ class RoleController extends Controller
             $data
         );
     }
+
+    /**
+     * 编辑角色
+     * @param $id
+     */
+    public function edit($id){
+        $RoleInfo = $this->role->find($id);
+        return view('admin.role.edit')->with(compact('RoleInfo'));
+    }
+
+    /**
+     * 保存编辑角色的信息
+     * @param Requests\RoleRequest $request
+     */
+    public function update(Requests\RoleRequest $request){
+        $this->role->updateRole($request);
+        return redirect('admin/role');
+    }
+
+    /**
+     * 删除角色
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy($id){
+        //todo 先暂时不去考虑，角色删除后，用户管理员的角色的问题，等后面再改
+        $this->role->destroyRole($id);
+        return redirect('admin/role');
+    }
+
 }
