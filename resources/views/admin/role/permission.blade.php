@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('css')
-    <link href="{{asset('backend/global/plugins/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('backend/global/plugins/select2/css/select2-bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/global/plugins/icheck/skins/all.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <div class="page-content">
@@ -35,40 +34,36 @@
                 <div class="portlet-body">
                     <form class="form-horizontal" role="form" method="POST" action="/admin/role/{{ $data['id']}}">
                         {!! csrf_field() !!}
-                        <div class="form-group">
-                            <div class="form-group">
-                                @if($data['permissionAll'])
-                                    @foreach($data['permissionAll'][0] as $v)
-                                        <div class="form-group">
-                                            <label class="control-label col-md-1 all-check">
-                                                {{$v['display_name']}}：
-                                                <input type="checkbox">
-                                            </label>
-                                            <div class="col-md-6">
-                                                @if(!empty($data['permissionAll'][$v['id']]))
+                        @if($data['permissionAll'])
+                            @foreach($data['permissionAll'][0] as $v)
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label check-all">
+                                        {{$v['display_name']}}：
+                                        <input type="checkbox" class="icheck">
+                                    </label>
+                                    <dic class="col-md-10">
+                                        <div class="input-group">
+                                            @if(!empty($data['permissionAll'][$v['id']]))
+                                                <div class="icheck-inline">
                                                     @foreach($data['permissionAll'][$v['id']] as $vv)
-                                                        <div class="col-md-2" style="float:left;padding-left:10px;margin-top:8px;">
-                                                            <span class="checkbox-custom checkbox-default">
-                                                            <i class="fa"></i>
-                                                                <input class="form-actions"
-                                                                       @if(in_array($vv['id'],$data['perms']))
-                                                                       checked
-                                                                       @endif
-                                                                       id="inputChekbox{{$vv['id']}}" type="Checkbox" value="{{$vv['id']}}"
-                                                                       name="permissions[]">
-                                                                <label for="inputChekbox{{$vv['id']}}">
-                                                                    {{$vv['display_name']}}
-                                                                </label>
-                                                            </span>
-                                                        </div>
+                                                        <label>
+                                                            <input
+                                                                @if(in_array($vv['id'],$data['perms'])) checked @endif
+                                                                id="inputChekbox{{$vv['id']}}"
+                                                                class="icheck"
+                                                                type="checkbox"
+                                                                value="{{$vv['id']}}"
+                                                                name="permissions[]"
+                                                            >{{$vv['display_name']}}
+                                                        </label>
                                                     @endforeach
-                                                @endif
-                                            </div>
+                                                </div>
+                                            @endif
                                         </div>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
+                                    </dic>
+                                </div>
+                            @endforeach
+                        @endif
                     </form>
                 </div>
             </div>
@@ -79,13 +74,17 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{asset('backend/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('backend/global/plugins/icheck/icheck.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('backend/js/form-icheck.js')}}" type="text/javascript"></script>
     <script>
         $(document).ready(function() {
-            // Select2
-            $(".select2_single").select2({
-                placeholder: "Select a state",
-                allowClear: true
+            $('.check-all').on('click',function () {
+                alert($(this).prop('checked'));
+                if($(this).prop('checked')){
+                    $(this).siblings().find("input[name='permissions']").prop('checked',$(this).prop('checked'));
+                }else{
+                    $(this).siblings().find("input[name='permissions']").prop('checked',$(this).prop('checked'));
+                }
             });
         });
     </script>
