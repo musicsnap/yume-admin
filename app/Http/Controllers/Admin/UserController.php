@@ -109,7 +109,7 @@ class UserController extends Controller
      */
     public function create(){
         $RoleList = $this->role->getRole();
-        
+
         return view('admin.user.create')->with(compact('RoleList'));
     }
 

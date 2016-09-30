@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Permission;
+use App\Repositories\Eloquent\PermissionRepository;
 use App\Repositories\Eloquent\RoleRepository;
 use Illuminate\Http\Request;
 
@@ -11,12 +13,21 @@ use App\Http\Controllers\Controller;
 class RoleController extends Controller
 {
     //
+    protected $fields = [
+        'name' => '',
+        'display_name' => '',
+        'description' => '',
+        'perms' => [],
+    ];
 
     private $role;
 
-    public function __construct(RoleRepository $role)
+    private $permission;
+
+    public function __construct(RoleRepository $role,PermissionRepository $permission)
     {
         $this->role=$role;
+        $this->permission=$permission;
     }
 
     /**
@@ -144,6 +155,35 @@ class RoleController extends Controller
         //todo 先暂时不去考虑，角色删除后，用户管理员的角色的问题，等后面再改
         $this->role->destroyRole($id);
         return redirect('admin/role');
+    }
+
+    public function permission($id){
+        if(empty($id)){
+            return redirect('/admin/role');
+        }
+        $role = $this->role->find($id);
+        if(empty($role)){
+            flash('找不到当前角色信息', 'error');
+            return redirect('/admin/role');
+        }
+        //获取当前角色及其权限信息
+        $permissions = [];
+        if ($role->perms) {
+            foreach ($role->perms as $v) {
+                $permissions[] = $v->id;
+            }
+        }
+        $role->perms = $permissions;
+        foreach (array_keys($this->fields) as $field) {
+            $data[$field] = old($field, $role->$field);
+        }
+        $arr = $this->permission->all()->toArray();
+        foreach ($arr as $v) {
+            $data['permissionAll'][$v['pid']][] = $v;
+        }
+        $data['id'] = (int)$id;
+
+       return view('admin.role.permission')->with(compact('data'));
     }
 
 }
