@@ -32,14 +32,14 @@
                     <div class="tools"> </div>
                 </div>
                 <div class="portlet-body">
-                    <form class="form-horizontal" role="form" method="POST" action="/admin/role/{{ $data['id']}}">
+                    <form class="form-horizontal" role="form" method="POST" action="/admin/role/saverolepermission/{{ $data['id']}}">
                         {!! csrf_field() !!}
                         @if($data['permissionAll'])
                             @foreach($data['permissionAll'][0] as $v)
                                 <div class="form-group">
                                     <label class="col-md-2 control-label check-all">
                                         {{$v['display_name']}}：
-                                        <input type="checkbox" class="icheck">
+                                        <input type="checkbox" class="icheck check-all">
                                     </label>
                                     <dic class="col-md-10">
                                         <div class="input-group">
@@ -63,6 +63,14 @@
                                     </dic>
                                 </div>
                             @endforeach
+                                <div class="form-actions fluid">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button type="submit" class="btn green">提交</button>
+                                            <button type="reset" class="btn default">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
                         @endif
                     </form>
                 </div>
@@ -79,11 +87,10 @@
     <script>
         $(document).ready(function() {
             $('.check-all').on('click',function () {
-                alert($(this).prop('checked'));
-                if($(this).prop('checked')){
-                    $(this).siblings().find("input[name='permissions']").prop('checked',$(this).prop('checked'));
+                if($(this).find('.icheck').prop('checked')=== true){
+                    $(this).closest('.form-group').find("input[name='permissions']").prop('checked',true);
                 }else{
-                    $(this).siblings().find("input[name='permissions']").prop('checked',$(this).prop('checked'));
+                    $(this).closest('.form-group').find("input[name='permissions']").prop('checked',false);
                 }
             });
         });

@@ -14,6 +14,7 @@ $router->resource('user','UserController');
 
 //角色管理
 $router->get('role/permission/{id}','RoleController@permission');
+$router->post('role/saverolepermission/{id}','RoleController@saverolepermission');
 $router->resource('role','RoleController');
 
 

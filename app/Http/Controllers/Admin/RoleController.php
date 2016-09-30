@@ -186,4 +186,11 @@ class RoleController extends Controller
        return view('admin.role.permission')->with(compact('data'));
     }
 
+    /**
+     * 保存权限分配
+     */
+    public function saverolepermission(){
+
+    }
+
 }
