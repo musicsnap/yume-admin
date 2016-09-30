@@ -93,7 +93,7 @@
                                 </div>
 
                                 {{--<div class="form-group">--}}
-                                    {{--<label class="control-label col-md-3">用户角色</label>--}}
+                                    {{--<label class="control-label col-md-3">所属用户组</label>--}}
                                     {{--<div class="col-md-4">--}}
                                         {{--<select class="select2_single form-control" tabindex="-1" name="role_id">--}}
                                             {{--{!! $roles->getMenu($RoleList) !!}--}}
@@ -124,7 +124,7 @@
         $(document).ready(function() {
             // Select2
             $(".select2_single").select2({
-                placeholder: "Select a state",
+                placeholder: "请选择角色",
                 allowClear: true
             });
         });

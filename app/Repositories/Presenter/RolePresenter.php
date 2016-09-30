@@ -20,7 +20,7 @@ class RolePresenter{
         if ($role) {
             $option = '<option value="0">请选择角色</option>';
             foreach ($role as $v) {
-                $option .= '<option value="'.$v->id.'">'.$v->name.'</option>';
+                $option .= '<option value="'.$v->id.'">'.$v->name.'--'.$v->display_name.'</option>';
             }
             return $option;
         }
