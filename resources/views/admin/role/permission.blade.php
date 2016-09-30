@@ -24,7 +24,6 @@
 
     <div class="row">
         <div class="col-md-12 ">
-            <input type="hidden" name="_token" id="csrf_token" value="{{csrf_token()}}">
             <div class="portlet box green">
                 <div class="portlet-title">
                     <div class="caption font-dark">
@@ -35,6 +34,7 @@
                 </div>
                 <div class="portlet-body">
                     <form class="form-horizontal" role="form" method="POST" action="/admin/role/{{ $data['id']}}">
+                        {!! csrf_field() !!}
                         <div class="form-group">
                             <div class="form-group">
                                 @if($data['permissionAll'])
@@ -42,6 +42,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-1 all-check">
                                                 {{$v['display_name']}}：
+                                                <input type="checkbox">
                                             </label>
                                             <div class="col-md-6">
                                                 @if(!empty($data['permissionAll'][$v['id']]))
