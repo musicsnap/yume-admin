@@ -3,7 +3,7 @@
     <link href="{{asset('backend/global/plugins/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('backend/global/plugins/select2/css/select2-bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
-
+@inject('permissions','App\Repositories\Presenter\PermissionPresenter')
 @section('content')
     <div class="page-content">
         <div class="page-head">
@@ -63,6 +63,14 @@
                                     <label class="col-md-3 control-label">显示权限</label>
                                     <div class="col-md-4">
                                         <input type="text" class="form-control" value="{{$PermissionInfo->display_name}}" name="display_name" placeholder="显示权限">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">父级权限</label>
+                                    <div class="col-md-4">
+                                        <select class="select2_single form-control" tabindex="-1" name="pid">
+                                            {!!$permissions->getParentPermission($permission,$PermissionInfo->pid)!!}
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -37,7 +37,8 @@ class PermissionController extends Controller
     public function create()
     {
         //
-        return view('admin.permission.create');
+        $permission = $this->permission->findByField('pid','0');
+        return view('admin.permission.create')->with(compact('permission','permission'));
     }
 
     /**
@@ -137,7 +138,8 @@ class PermissionController extends Controller
     public function edit($id)
     {
        $PermissionInfo =  $this->permission->find($id);
-        return view('admin.permission.edit')->with(compact('PermissionInfo'));
+        $permission = $this->permission->findByField('pid','0');
+        return view('admin.permission.edit')->with(compact('PermissionInfo','permission'));
     }
 
     /**
