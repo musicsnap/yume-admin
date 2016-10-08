@@ -10,6 +10,8 @@ $router->get('/','IndexController@index');
 $router->resource('index','IndexController');
 
 //用户管理
+$router->get('user/role/{id}','UserController@role');
+$router->post('user/saverole/{id}','UserController@saverole');
 $router->resource('user','UserController');
 
 //角色管理

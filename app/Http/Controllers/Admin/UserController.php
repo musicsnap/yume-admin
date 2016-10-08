@@ -20,6 +20,11 @@ class UserController extends Controller
     private $user;
 
     private $userrole;
+    protected $fields = [
+        'username' => '',
+        'email' => '',
+        'roles' => [],
+    ];
 
     public function __construct(UserRepository $user,RoleRepository $role,RoleUserRepository $userrole)
     {
@@ -153,6 +158,29 @@ class UserController extends Controller
     public function destroy($id){
         $this->user->destroyUser($id);
         return redirect('admin/user');
+    }
+
+
+    //用户分配角色
+    public function role($id){
+        $user = $this->user->find($id);
+        if (!$user) {
+            flash('找不到当前用户信息', 'error');
+            return redirect('/admin/user');
+        }
+        $roles = [];
+        if ($user->roles) {
+            foreach ($user->roles as $v) {
+                $roles[] = $v->id;
+            }
+        }
+        $user->roles = $roles;
+        foreach (array_keys($this->fields) as $field) {
+            $data[$field] = old($field, $user->$field);
+        }
+        $data['rolesAll'] = $this->role->all()->toArray();
+        $data['id'] = (int)$id;
+        return view('admin.user.role')->with(compact('data'));
     }
 
 
