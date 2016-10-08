@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Permission;
+use App\Models\Role;
 use App\Repositories\Eloquent\PermissionRepository;
 use App\Repositories\Eloquent\RoleRepository;
 use Illuminate\Http\Request;
@@ -189,8 +190,31 @@ class RoleController extends Controller
     /**
      * 保存权限分配
      */
-    public function saverolepermission(){
+    public function saverolepermission($id,Request $request){
+        $permissions = $request->input('permissions');
 
+        $role = $this->role->find($id);
+        if(empty($role)){
+            flash('找不到当前角色信息', 'error');
+            return redirect('/admin/role');
+        }
+        //todo 这边的是查询当前的权限的父级，然后合并
+        if(!empty($permissions)){
+            foreach ($permissions as $key=>$val){
+                $pid[] = $this->permission->find($val,['pid'])->pid;
+            }
+        }
+        if(!empty($pid)){
+            $pid =  array_unique($pid);
+            $permissions =  array_merge($pid,$permissions);
+        }
+
+        //todo 这个问题待研究
+        $rolemodel = new Role();
+        $role->givePermissionsTo($permissions);
+
+        return redirect('admin/role');
     }
+
 
 }

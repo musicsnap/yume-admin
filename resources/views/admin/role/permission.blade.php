@@ -37,9 +37,9 @@
                         @if($data['permissionAll'])
                             @foreach($data['permissionAll'][0] as $v)
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label check-all">
+                                    <label class="col-md-2 control-label">
                                         {{$v['display_name']}}：
-                                        <input type="checkbox" class="icheck check-all">
+                                        <input type="checkbox" class="check-all">
                                     </label>
                                     <dic class="col-md-10">
                                         <div class="input-group">
@@ -50,7 +50,7 @@
                                                             <input
                                                                 @if(in_array($vv['id'],$data['perms'])) checked @endif
                                                                 id="inputChekbox{{$vv['id']}}"
-                                                                class="icheck"
+                                                                class="check-child"
                                                                 type="checkbox"
                                                                 value="{{$vv['id']}}"
                                                                 name="permissions[]"
@@ -87,12 +87,24 @@
     <script>
         $(document).ready(function() {
             $('.check-all').on('click',function () {
-                if($(this).find('.icheck').prop('checked')=== true){
-                    $(this).closest('.form-group').find("input[name='permissions']").prop('checked',true);
+                if($(this).prop('checked')== true){
+                    $(this).closest('.form-group').find(".check-child").prop('checked',true);
+                    return ;
                 }else{
-                    $(this).closest('.form-group').find("input[name='permissions']").prop('checked',false);
+                    $(this).closest('.form-group').find(".check-child").prop('checked',false);
+                    return;
                 }
             });
+
+
+
+
+
+
+
+
+
+
         });
     </script>
 @endsection
