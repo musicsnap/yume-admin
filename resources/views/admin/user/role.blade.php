@@ -36,24 +36,19 @@
                             {!! csrf_field() !!}
                             <div class="form-group">
                                 <label for="tag" class="col-md-2 control-label">角色列表:</label>
-                                @if(isset($data['id'])&&$data['id']==11)
+                                @if(isset($data['id'])&&$data['id']==1)
                                     <div class="col-md-10"><h4>超级管理员</h4></div>
                                 @else
                                     <div class="col-md-10">
-                                        @foreach($data['rolesAll'] as $v)
-                                            <div class="input-group ">
-                                                <div class="icheck-inline">
-                                                        <input class="form-actions"
-                                                               @if(in_array($v['id'],$data['roles']))
-                                                               checked
-                                                               @endif
-                                                               id="inputChekbox{{$v['id']}}" type="Checkbox" value="{{$v['id']}}"
-                                                               name="roles[]"> <label for="inputChekbox{{$v['id']}}">
-                                                        {{$v['display_name']}}
-                                                    </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                </div>
+                                        <div class="input-group">
+                                            <div class="icheck-inline">
+                                                @foreach($data['rolesAll'] as $v)
+                                                    <span style="padding-left: 20px">
+                                                        <input class="form-actions"@if(in_array($v['id'],$data['roles'])) checked @endif id="inputChekbox{{$v['id']}}" type="Checkbox" value="{{$v['id']}}" name="roles[]"><label for="inputChekbox{{$v['id']}}">{{$v['display_name']}}</label>
+                                                    </span>
+                                                @endforeach
                                             </div>
-                                        @endforeach
+                                        </div>
                                     </div>
 
                                     <div class="form-actions fluid">

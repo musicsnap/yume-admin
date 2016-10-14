@@ -183,6 +183,14 @@ class UserController extends Controller
         return view('admin.user.role')->with(compact('data'));
     }
 
+    public function saverole(Request $request,$id){
+        $user = $this->user->find($id);
+
+        $user->giveRoleTo($request->get('roles',[]));
+
+        return redirect('admin/user');
+    }
+
 
 
 }

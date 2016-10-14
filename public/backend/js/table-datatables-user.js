@@ -74,7 +74,7 @@ var TableDatatablesButtons = function () {
             "pagingType":   "full_numbers",
             "processing": true,
             "serverSide": true,
-            "bStateSave": true,//保存当前的状态（如分页状态，排序状态）
+            // "bStateSave": true,//保存当前的状态（如分页状态，排序状态）
             "ajax": {
                 "url":"/admin/user/show",
             },
@@ -89,7 +89,7 @@ var TableDatatablesButtons = function () {
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                             $(nTd).html("<a href='/admin/user/"+sData+"/edit' class='btn btn-outline btn-circle btn-sm blue'><i class='fa fa-edit'></i> 编辑 </a>");
                             $(nTd).append("<a href='javascript:void(0);' data-id='"+sData+"' class='destoryUser btn btn-outline btn-circle dark btn-sm'><i class='fa fa-trash-o'></i><form action='/admin/user/"+sData+"' method='POST' name='delete_item"+sData+"' style='display:none'><input type='hidden'name='_method' value='delete'><input type='hidden' name='_token' value='"+csrf_token+"'></form> 删除 </a>");
-                            $(nTd).append("<a href='javascript:void(0);' class='btn green btn-sm btn-outline btn-circle uppercase'><i class='fa fa-share'></i> 查看 </a>");
+                            $(nTd).append("<a href='/admin/user/role/"+sData+"' class='btn green btn-sm btn-outline btn-circle uppercase'><i class='fa fa-share'></i> 角色 </a>");
                     }
                 },
             ],
