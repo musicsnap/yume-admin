@@ -4,17 +4,17 @@
     <div class="page-head">
         <div class="page-title">
             <h1>控制台
-                <small>首页</small>
+                <small>日志管理</small>
             </h1>
         </div>
     </div>
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="/admin">首页</a>
+            <a href="/admin">日志管理</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span class="active">系统</span>
+            <span class="active">日志统计</span>
         </li>
     </ul>
     <div class="row">

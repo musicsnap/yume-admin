@@ -19,8 +19,9 @@ $router->get('role/permission/{id}','RoleController@permission');
 $router->post('role/saverolepermission/{id}','RoleController@saverolepermission');
 $router->resource('role','RoleController');
 
-
 //权限管理
 $router->resource('permission','PermissionController');
+
+$router->get('log/total','LogController@index');
 
 

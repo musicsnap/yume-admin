@@ -12,7 +12,8 @@
         "predis/predis": "1.0.*",
         "laracasts/flash": "^2.0",
         "hieu-le/active": "^3.3",
-        "barryvdh/laravel-ide-helper": "^2.2"
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "arcanedev/log-viewer": "^3.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
