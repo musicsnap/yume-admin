@@ -13,7 +13,8 @@
         "laracasts/flash": "^2.0",
         "hieu-le/active": "^3.3",
         "barryvdh/laravel-ide-helper": "^2.2",
-        "arcanedev/log-viewer": "^3.10"
+        "arcanedev/log-viewer": "^3.10",
+        "maknz/slack": "^1.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -28,7 +29,10 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "classmap": [
