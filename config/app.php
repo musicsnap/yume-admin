@@ -164,7 +164,7 @@ return [
         HieuLe\Active\ActiveServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
-
+        Maknz\Slack\SlackServiceProvider::class,
     ],
 
     /*
@@ -213,6 +213,7 @@ return [
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
         'Active' => HieuLe\Active\Facades\Active::class,
+        'Slack' => Maknz\Slack\Facades\Slack::class,
     ],
 
 ];
