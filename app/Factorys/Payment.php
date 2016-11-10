@@ -10,13 +10,11 @@ use Illuminate\Support\Facades\Facade;
 
 class Payment extends Facade{
     /**
-     * 这个是重写的方法 {Facade}
+     * 这个是重写,测试实现Facade门面
      * @return string
      */
     protected static function getFacadeAccessor() {
-
         return 'payment';
-
     }
 
 }
