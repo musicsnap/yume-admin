@@ -214,6 +214,7 @@ return [
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
         'Active' => HieuLe\Active\Facades\Active::class,
         'Slack' => Maknz\Slack\Facades\Slack::class,
+        'Payment' => App\Factorys\Payment::class,
     ],
 
 ];

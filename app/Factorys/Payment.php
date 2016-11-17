@@ -5,7 +5,7 @@
  * Date: 2016/11/9
  * Time: 16:51
  */
-namespace App\Factory;
+namespace App\Factorys;
 use Illuminate\Support\Facades\Facade;
 
 class Payment extends Facade{
@@ -14,7 +14,9 @@ class Payment extends Facade{
      * @return string
      */
     protected static function getFacadeAccessor() {
-        return 'payment';
+
+        return 'Payment';
+
     }
 
 }

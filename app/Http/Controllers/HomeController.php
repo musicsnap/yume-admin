@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Factorys\Payment;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,7 @@ class HomeController extends Controller
      *
      * @return void
      */
+    private $payment;
     public function __construct()
     {
         $this->middleware('auth');
@@ -24,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        dd(Payment::find(1)->toArray());
         return view('home');
     }
 }
